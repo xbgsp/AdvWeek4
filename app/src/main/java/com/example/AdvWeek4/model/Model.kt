@@ -1,4 +1,4 @@
-package com.example.myapplication.model
+package com.example.AdvWeek4.model
 
 data class Student(
     val id:String?,

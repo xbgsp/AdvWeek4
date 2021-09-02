@@ -1,4 +1,4 @@
-package com.example.myapplication.view
+package com.example.AdvWeek4.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myapplication.R
-import com.example.myapplication.viewmodel.ListViewModel
+import com.example.AdvWeek4.R
+import com.example.AdvWeek4.viewmodel.ListViewModel
 import kotlinx.android.synthetic.main.fragment_student_list.*
 
 
