@@ -7,6 +7,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.AdvWeek4.R
 import com.example.AdvWeek4.model.Student
+import com.example.AdvWeek4.util.loadImage
 import kotlinx.android.synthetic.main.student_list_item.view.*
 
 class StudentListAdapter(val studenList:ArrayList<Student>)
@@ -34,6 +35,9 @@ class StudentListAdapter(val studenList:ArrayList<Student>)
             val action = StudentListFragmentDirections.actionDetail()
             Navigation.findNavController(it).navigate(action)
         }
+
+        holder.view.imageView.loadImage(studenList[position].photoUrl,
+            holder.view.progressBar)
     }
 
     override fun getItemCount(): Int {
