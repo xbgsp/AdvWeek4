@@ -10,16 +10,8 @@ import com.example.AdvWeek4.model.Student
 import com.example.AdvWeek4.util.loadImage
 import kotlinx.android.synthetic.main.student_list_item.view.*
 
-class StudentListAdapter(val studenList:ArrayList<Student>)
-    :RecyclerView.Adapter<StudentListAdapter.StudentViewHolder>()
-{
+class StudentListAdapter(val studenList:ArrayList<Student>) :RecyclerView.Adapter<StudentListAdapter.StudentViewHolder>() {
     class StudentViewHolder(var view: View) : RecyclerView.ViewHolder(view)
-
-    fun updateStudentList(newStudentList: List<Student>) {
-        studenList.clear()
-        studenList.addAll(newStudentList)
-        notifyDataSetChanged()
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): StudentViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -32,7 +24,8 @@ class StudentListAdapter(val studenList:ArrayList<Student>)
         holder.view.txtName.text = studenList[position].name
 
         holder.view.btnDetail.setOnClickListener {
-            val action = StudentListFragmentDirections.actionDetail()
+            val id = holder.view.txtId.text.toString()
+            val action = StudentListFragmentDirections.actionStudentDetail(id)
             Navigation.findNavController(it).navigate(action)
         }
 
@@ -42,6 +35,12 @@ class StudentListAdapter(val studenList:ArrayList<Student>)
 
     override fun getItemCount(): Int {
         return studenList.size
+    }
+
+    fun updateStudentList(newStudentList: List<Student>) {
+        studenList.clear()
+        studenList.addAll(newStudentList)
+        notifyDataSetChanged()
     }
 }
 
