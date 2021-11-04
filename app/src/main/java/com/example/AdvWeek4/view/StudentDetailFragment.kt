@@ -11,7 +11,11 @@ import androidx.navigation.Navigation
 import com.example.AdvWeek4.R
 import com.example.AdvWeek4.util.loadImage
 import com.example.AdvWeek4.viewmodel.ListViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.core.Observable
+import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_student_detail.*
+import java.util.concurrent.TimeUnit
 
 class StudentDetailFragment : Fragment() {
 
@@ -39,6 +43,18 @@ class StudentDetailFragment : Fragment() {
                 txtBod.setText(it[0].bod)
                 txtPhone.setText(it[0].phone)
                 imageViewStudentDetail.loadImage(it[0].photoUrl.toString(), progressBarStudentDetail)
+
+                var student = it[0]
+                btnNotif.setOnClickListener {
+                    Observable.timer(5, TimeUnit.SECONDS)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe {
+                            MainActivity.showNotification(student.name.toString(),
+                                "A new notification created",
+                                R.drawable.ic_baseline_person_24)
+                        }
+                }
             })
 
         }
