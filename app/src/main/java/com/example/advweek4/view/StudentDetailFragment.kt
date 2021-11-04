@@ -1,24 +1,28 @@
-package com.example.AdvWeek4.view
+package com.example.advweek4.view
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.example.AdvWeek4.R
-import com.example.AdvWeek4.util.loadImage
-import com.example.AdvWeek4.viewmodel.ListViewModel
+import com.example.advweek4.R
+import com.example.advweek4.util.loadImage
+import com.example.advweek4.viewmodel.ListViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_student_detail.*
 import java.util.concurrent.TimeUnit
+import android.view.Gravity
+
+
+
 
 class StudentDetailFragment : Fragment() {
-
     private lateinit var viewModel: ListViewModel
 
     override fun onCreateView(
@@ -46,6 +50,9 @@ class StudentDetailFragment : Fragment() {
 
                 var student = it[0]
                 btnNotif.setOnClickListener {
+                    val toast = Toast.makeText(context,
+                        "Notification Success!\nCheck on your status bar!", Toast.LENGTH_SHORT)
+                    toast.show()
                     Observable.timer(5, TimeUnit.SECONDS)
                         .subscribeOn(Schedulers.io())
                         .observeOn(AndroidSchedulers.mainThread())
@@ -60,6 +67,8 @@ class StudentDetailFragment : Fragment() {
         }
 
         btnUpdate.setOnClickListener {
+            val toast = Toast.makeText(context, "Update Success!", Toast.LENGTH_SHORT)
+            toast.show()
             val action = StudentDetailFragmentDirections.actionStudentList()
             Navigation.findNavController(it).navigate(action)
         }

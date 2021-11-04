@@ -1,17 +1,11 @@
-package com.example.AdvWeek4.view
+package com.example.advweek4.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import com.example.AdvWeek4.R
-import com.example.AdvWeek4.util.createNotificationChannel
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.core.Observer
-import io.reactivex.rxjava3.disposables.Disposable
-import io.reactivex.rxjava3.schedulers.Schedulers
+import com.example.advweek4.R
+import com.example.advweek4.util.createNotificationChannel
 
 class MainActivity : AppCompatActivity() {
 

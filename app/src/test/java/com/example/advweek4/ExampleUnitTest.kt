@@ -1,4 +1,4 @@
-package com.example.AdvWeek4
+package com.example.advweek4
 
 import org.junit.Test
 
